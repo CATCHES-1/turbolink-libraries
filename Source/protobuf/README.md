@@ -62,6 +62,8 @@ cmake -G "Ninja Multi-Config" -DCMAKE_MAKE_PROGRAM=%NINJA_EXE_PATH% ^
  -DCMAKE_INSTALL_LIBDIR="lib/linux/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>" ^
  -DCMAKE_INSTALL_CMAKEDIR=lib/linux/cmake ^
  -Dprotobuf_BUILD_TESTS=false -Dprotobuf_WITH_ZLIB=false ^
+ -Dprotobuf_BUILD_SHARED_LIBS=ON ^
+ -Dprotobuf_DISABLE_RTTI=ON ^
  -Dprotobuf_BUILD_EXAMPLES=false ^
  -Dprotobuf_BUILD_PROTOC_BINARIES=false -Dprotobuf_BUILD_LIBPROTOC=false ^
  -Dprotobuf_ABSL_PROVIDER=package -Dabsl_DIR="%TL_LIBRARIES_PATH%/output/abseil/lib/linux/cmake" ^

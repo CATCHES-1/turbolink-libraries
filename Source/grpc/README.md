@@ -87,6 +87,7 @@ cmake -G "Ninja Multi-Config" -DCMAKE_MAKE_PROGRAM=%NINJA_EXE_PATH% ^
  -DgRPC_ABSL_PROVIDER=package -Dabsl_DIR="%TL_LIBRARIES_PATH%/output/abseil/lib/linux/cmake" ^
  -DgRPC_USE_CARES=OFF ^
  -DgRPC_RE2_PROVIDER=package -Dre2_DIR="%TL_LIBRARIES_PATH%/output/re2/lib/linux/cmake" ^
+ -DgRPC_BUILD_SHARED_LIBS=ON ^
  -DgRPC_PROTOBUF_PROVIDER=package ^
  -DProtobuf_DIR="%TL_LIBRARIES_PATH%/output/protobuf/lib/linux/cmake" ^
  -Dutf8_range_DIR="%TL_LIBRARIES_PATH%/output/protobuf/lib/linux/cmake" ^

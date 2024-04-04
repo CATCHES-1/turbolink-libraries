@@ -7,7 +7,7 @@ set(UNIX 1)
 string (REPLACE "\\" "/" CLANG_MULTIARCH_ROOT "$ENV{LINUX_MULTIARCH_ROOT}")
 set(LINUX_ARCH_NAME "${CMAKE_SYSTEM_PROCESSOR}-unknown-linux-gnu")
 
-set(CLANG_TOOLCHAIN_ROOT "${CLANG_MULTIARCH_ROOT}/${LINUX_ARCH_NAME}")
+set(CLANG_TOOLCHAIN_ROOT "${CLANG_MULTIARCH_ROOT}${LINUX_ARCH_NAME}")
 if (NOT EXISTS "${CLANG_TOOLCHAIN_ROOT}")
 	message(FATAL_ERROR "Path <${CLANG_TOOLCHAIN_ROOT}> does not exist")
 endif()
@@ -27,6 +27,7 @@ set(CMAKE_STATIC_LIBRARY_SUFFIX_CXX ".a")
 # =============================================================================
 set(CMAKE_C_COMPILER_WORKS 1)
 set(CMAKE_CXX_COMPILER_WORKS 1)
+set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_FIND_ROOT_PATH ${CLANG_TOOLCHAIN_ROOT})
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
@@ -53,7 +54,7 @@ set(CMAKE_OBJDUMP 		${CLANG_TOOLCHAIN_BIN}/x86_64-unknown-linux-gnu-objdump.exe	
 # =============================================================================
 # Define flags 
 # =============================================================================
-set(COMPILER_FLAGS 		 " -nostdinc++ --target=${LINUX_ARCH_NAME} --sysroot='${CLANG_TOOLCHAIN_ROOT}' -fno-math-errno -fno-rtti -fno-exceptions -fdiagnostics-format=msvc -funwind-tables -gdwarf-3")
+set(COMPILER_FLAGS 		 " -nodefaultlibs --target=${LINUX_ARCH_NAME} -I  -fno-math-errno -fno-rtti -fno-exceptions -fdiagnostics-format=msvc -funwind-tables -gdwarf-3")
 set(FLAGS_DEBUG 		 " -O0 -g -D_DEBUG")
 set(FLAGS_MINSIZEREL 	 " -Os -DNDEBUG")
 set(FLAGS_RELEASE 		 " -O3 -DNDEBUG")
